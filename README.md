@@ -1,6 +1,32 @@
-frontend-nanodegree-arcade-game
+#ArcadeClone
+
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+ArcadeClone is a game programmed for the Udacity Nanodegree "Front Ende Webdeveloper".
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+---------------------------
+
+### Starting the game
+
+When you load the page, just choose a character with whom you want to play. Just klick on the radio button left of the name of the charakter. Then just press the button "Start the game!!!".
+
+----------------------
+
+### Playing ArcadeClone
+
+##### Goal of the Game
+Your goal is to reach the water. In this case you get **one scorepoint**. You will see your collected score-points on the score-table, left of the playing field. But be aware of the bugs. If they hit you while you try to reach the water, you will loose **one life**.
+
+##### How to win
+To win the game, you have to collect **10 score-points**. In the moment where you collect your tenth point, **you win!!!**
+
+##### How to loose
+If a bug hits you, you **loose one life**. You have three lifes at the beginning, so be careful. Good news: _You can collect additional lifes!_ Just collect a heart. It´s changing its position in a random number of seconds, sometimes it´ll vanish from the playing field. The bugs are moving on an random speed.
+
+##### Whats about the gems?
+You can collect gems while you try to reach the shore. You will collect **one gem-point for the greens** and **three gem-points for the blue**. You don´t need the gem-points to win. But maybe you want to be the best player of all, hm? The gems are changing their position in a random number of seconds. Sometimes they vanish from the playing field.
+
+##### What about the rocks?
+You cannot pass a field with a rock. No way, you have to go around it. The rock  will change its position every time you hit the water and collect a score-point.
+
+## Have fun!
