@@ -1,77 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Effective JavaScript: Frogger</title>
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
+
 <body>
-
     <div id="request">
-
         <div id="form">
-        <form name="formular">
-            <h2>Please choose your Player</h2>
-
-                    <div class="player">
-
-                        <input type="radio" id="cb" name="player" value="images/char-boy.png" checked = "true">
-                        <label for="cb">Char-Boy</label><br>
-                        <img class="choosePlayer" src="images/char-boy.png">
-                    </div>
-                    <div class="player">
-
+            <form name="formular">
+                <h2>Please choose your Player</h2>
+                <div class="player">
+                    <img class="choosePlayer" src="images/char-boy.png" alt="comicstyle boy">
+                    <br>
+                    <input type="radio" id="cb" name="player" value="images/char-boy.png" checked="checked">
+                    <label for="cb">Char-Boy</label>
+                </div>
+                <div class="player">
+                    <img class="choosePlayer" src="images/char-cat-girl.png" alt="Comic-Girl with a little hat that looks like a cat">
+                    <br>
                     <input type="radio" id="ccg" name="player" value="images/char-cat-girl.png">
-                    <label for="ccg">Char-Cat-Girl</label><br>
-                    <img class="choosePlayer" src="images/char-cat-girl.png">
-                    </div>
-                    <div class="player">
+                    <label for="ccg">Char-Cat-Girl</label>
+                </div>
+                <div class="player">
+                    <img class="choosePlayer" src="images/char-horn-girl.png" alt="comicgirl with a little hat with horns">
+                    <br>
                     <input type="radio" id="chg" name="player" value="images/char-horn-girl.png">
-                    <label for="chg">Char-Horn-Girl</label><br>
-                    <img class="choosePlayer" src="images/char-horn-girl.png">
-                    </div>
-                    <div class="player">
+                    <label for="chg">Char-Horn-Girl</label>
+                </div>
+                <div class="player">
+                    <img class="choosePlayer" src="images/char-pink-girl.png" alt="comicgirl with pink hair">
+                    <br>
                     <input type="radio" id="cpg" name="player" value="images/char-pink-girl.png">
-                    <label for="cpg">Char-Pink-Girl</label><br>
-                    <img class="choosePlayer" src="images/char-pink-girl.png">
-                    </div>
-                    <div class="player">
+                    <label for="cpg">Char-Pink-Girl</label>
+                </div>
+                <div class="player">
+                    <img class="choosePlayer" src="images/char-princess-girl.png" alt="comicgirl with a little crown">
+                    <br>
                     <input type="radio" id="cprg" name="player" value="images/char-princess-girl.png">
-                    <label for="cprg">Char-Princess-Girl</label><br>
-                    <img class="choosePlayer" src="images/char-princess-girl.png">
-                    </div>
-       </form>
-       <button id="init">Start the game!!!</button>
+                    <label for="cprg">Char-Princess-Girl</label>
+                </div>
+            </form>
+            <button id="init">Start the game!!!</button>
         </div>
-
-
-
-
     </div>
-
-
     <h1>Arcade Clone</h1>
-
-
     <div class="gameInfo">
-    <h3>Score: </h3><h3 id="score">0</h3>
-    <h3>Gems: </h3><h3 id ="gems">0</h3>
-    <h3>Life: </h3><h3 id="life">3</h3>
+        <h3>Score: </h3>
+        <h4 class="numbers" id="score">0</h4>
+        <h3>Gems: </h3>
+        <h4 class="numbers" id="gems">0</h4>
+        <h3>Life: </h3>
+        <h4 class="numbers" id="life">3</h4>
     </div>
-
-
-
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
-
-
-
-
-
-
 </body>
+
 </html>

@@ -13,7 +13,6 @@
  * the canvas' context (ctx) object globally available to make writing app.js
  * a little simpler to work with.
  */
-
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -24,8 +23,8 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
-        /*übergibt die init-Funktion ins Window-Object, damit ich von app.js
-        darauf zugreifen kann*/
+    /*übergibt die init-Funktion ins Window-Object, damit ich von app.js
+    darauf zugreifen kann*/
     window.start = init;
 
 
@@ -87,9 +86,9 @@ var Engine = (function(global) {
 
         updateEntities(dt);
 
-        enemy.checkCollisions();
+        enemy1.checkCollisions();
 
-        gems.checkCollisionsItems();
+        gem_green.checkCollisionsItems();
     }
 
     /* This is called by the update function and loops through all of the
@@ -101,9 +100,9 @@ var Engine = (function(global) {
      */
 
     function updateEntities(dt) {
-        allGreenGems.forEach(function(gems){
+        allGreenGems.forEach(function(gems) {
             gems.update();
-        })
+        });
         gem_blue.update();
         heart.update();
         rock.update();
@@ -125,12 +124,12 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/water-block.png', // Top row is water
+                'images/stone-block.png', // Row 1 of 3 of stone
+                'images/stone-block.png', // Row 2 of 3 of stone
+                'images/stone-block.png', // Row 3 of 3 of stone
+                'images/grass-block.png', // Row 1 of 2 of grass
+                'images/grass-block.png' // Row 2 of 2 of grass
             ],
             numRows = 6,
             numCols = 5,
@@ -164,10 +163,7 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-
-
-
-        allGreenGems.forEach(function(gems){
+        allGreenGems.forEach(function(gems) {
             gems.render();
         });
 
@@ -191,30 +187,30 @@ var Engine = (function(global) {
 
 
 
-
-
     /* This function does nothing but it could have been a good place to
      * handle game reset states - maybe a new game menu or a game over screen
      * those sorts of things. It's only called once by the init() method.
      */
-     // Function to call the Choose-your-Player-window before the Game starts,
+    // Function to call the Choose-your-Player-window before the Game starts,
     // to deliver the right player-image into the Player-object
     // and to hide the Choose-your-Player-window after choosing a player
     function reset() {
+        document.querySelector(".gameInfo").style.display = "none";
         //making the request-panel visible
         document.getElementById("request").style.display = "inline-block";
         document.getElementById("life").innerHTML = player.live;
         var button = document.getElementById("init");
-        function hideWindow(){
+
+        function hideWindow() {
             document.getElementById("request").style.display = "none";
             document.querySelector(".gameInfo").style.display = "block";
             choosePlayerImage();
         }
-        function choosePlayerImage(){
+
+        function choosePlayerImage() {
             player.sprite = document.formular.player.value;
             player.moveAllowed = true;
         }
-
         button.addEventListener("click", hideWindow);
     }
 

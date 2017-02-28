@@ -1,68 +1,93 @@
 body {
     text-align: center;
 }
+/*Styling of the score-board which is visible while playing*/
+
+.gameInfo {
+    border-radius: 50px;
+    text-align: center;
+    position: absolute;
+    top: 210px;
+    height: 530px;
+    width: 200px;
+    margin-left: 10%;
+    background-color: #4dbc20;
+    display: none;
+    -webkit-box-shadow: 6px 18px 62px -22px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 6px 18px 62px -22px rgba(0, 0, 0, 0.6);
+    box-shadow: 6px 18px 62px -22px rgba(0, 0, 0, 0.6);
+}
+/*Styling of the grey transparent div that lays over the canvas while choosing
+your Player*/
 
 #request {
-    display: inline-block;
     position: absolute;
-
-
     left: 0;
     width: 100vw;
     height: 100vh;
     border: 1px solid black;
     background: rgba(190, 199, 214, 0.9);
-
 }
+/*Styling of the green div lying under the pictures of the players*/
 
 #form {
     border-radius: 50px;
-    display: block;
-    height: 500px;
     width: 80vw;
+    height: 450px;
     margin-left: 10vw;
     margin-top: 100px;
     background: green;
     opacity: 0.8;
-    -webkit-box-shadow: 5px 18px 62px 2px rgba(0,0,0,0.6);
-    -moz-box-shadow: 5px 18px 62px 2px rgba(0,0,0,0.6);
-    box-shadow: 5px 18px 62px 2px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 5px 18px 62px 2px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 5px 18px 62px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 5px 18px 62px 2px rgba(0, 0, 0, 0.6);
 }
+/*Styling of the div with the player picture and the radio-button*/
+
+.player {
+    display: inline-block;
+    width: 19.5%;
+    float: left;
+}
+/*Styling and position of the button to start the game*/
+
+#init {
+    width: 200px;
+    margin-top: 50px;
+    border-radius: 40px;
+    font-family: "Impact", "Charcoal", sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
+/*Styling fonts and numbers*/
 
 h1 {
     font-family: 'Yesteryear', cursive;
     font-size: 100px;
     margin-top: 10px;
     margin-bottom: 0;
-
 }
-h3 {
+
+h2 {
     font-family: 'Yesteryear', cursive;
+    font-size: 70px;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-family: "Impact", "Charcoal", sans-serif;
     font-size: 35px;
 }
 
-.player {
-    display: inline;
-    width: 300px;
+label {
+    font-family: "Impact", "Charcoal", sans-serif;
+    font-size: 18px;
 }
 
-.choosePlayer {
-float: left;
-postion: absolute;
+.numbers {
+    font-size: 30px;
 }
 
 
 
-.gameInfo {
-    text-align: center;
-    position: absolute;
-    height: 500px;
-    width: 200px;
-    margin-left: 10%;
-    background-color: #4dbc20;
-    display: none;
-    -webkit-box-shadow: 6px 18px 62px -22px rgba(0,0,0,0.6);
-    -moz-box-shadow: 6px 18px 62px -22px rgba(0,0,0,0.6);
-    box-shadow: 6px 18px 62px -22px rgba(0,0,0,0.6);
 
-}
