@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    margin: 0;
 }
 /*Styling of the score-board which is visible while playing*/
 
@@ -23,9 +24,9 @@ your Player*/
 #request {
     position: absolute;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+
     background: rgba(190, 199, 214, 0.9);
 }
 /*Styling of the green div lying under the pictures of the players*/
