@@ -29,4 +29,9 @@ You can collect gems while you try to reach the shore. You will collect **one ge
 ### What about the rocks?
 You cannot pass a field with a rock. No way, you have to go around it. The rock  will change its position every time you hit the water and collect a score-point.
 
+----------------
+
+** You find a hosted version of the game here:
+https://feliximpark.github.io/arcade/**
+
 ## Have fun!
