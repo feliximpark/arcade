@@ -31,7 +31,7 @@ You cannot pass a field with a rock. No way, you have to go around it. The rock 
 
 ----------------
 
-** You find a hosted version of the game here:
+**You find a hosted version of the game here:
 https://feliximpark.github.io/arcade/**
 
 ## Have fun!
