@@ -1,7 +1,7 @@
-// Declaring some global variables for the Start-Position of the player (fieldx, fieldy),
+// Declaring some global constants for the Start-Position of the player (FIELD_X, FIELD_Y),
 // for the key-value released by the Engine and the array for enemies and gems
-var fieldX = 202;
-var fieldY = 404;
+var FIELD_X = 202;
+var FIELD_Y = 404;
 var key = null;
 var allEnemies = [];
 var allGreenGems = [];
@@ -39,20 +39,10 @@ Enemy.prototype.render = function() {
 //function (invoked in Engine, function update) that checks if player and enemy are colliding by iterating over the
 //allItems-array and comparing the x- and y-values of every array element with the
 // x- and y-values of the player
-// if they collide, the function sets player.live -1 and prints the new live-value
-// on the score-board. If live-value reaches 0, the method player.endGame is invoked
-// and the game is over.
+// if they collide, the method Player.prototype.collide is invoked.
 Enemy.prototype.checkCollisions = function() {
-    for (var i = 0; i <= allEnemies.length - 1; i++) {
-        if (allEnemies[i].y === (player.y - 12) && allEnemies[i].x > player.x - 75 && allEnemies[i].x < player.x + 70) {
-            player.live -= 1;
-            document.getElementById("life").innerHTML = player.live;
-            player.x = fieldX;
-            player.y = fieldY;
-            if (player.live === 0) {
-                player.endGame();
-            }
-        }
+    if (this.y === (player.y - 12) && this.x > player.x - 75 && this.x < player.x + 70) {
+        player.collide();
     }
 };
 
@@ -144,11 +134,27 @@ Player.prototype.update = function() {
 Player.prototype.winner = function() {
     this.score += 1;
     document.querySelector("#score").textContent = this.score;
-    this.x = fieldX;
-    this.y = fieldY;
+    this.x = FIELD_X;
+    this.y = FIELD_Y;
     rock.newRound = true;
-    if (player.score === 10) {
-        player.endGame();
+    if (this.score === 10) {
+        this.endGame();
+    }
+};
+
+// if in the method Enemy.checkCollision a collision between Enemy and Player is
+// detetected, the method Player.prototype.collide is invoked.
+// the method sets player.live -1 and prints the new live-value
+// on the score-board. If live-value reaches 0, the method player.endGame is invoked
+// and the game is over.
+
+Player.prototype.collide = function(){
+    this.live -= 1;
+    document.getElementById("life").innerHTML = this.live;
+    this.x = FIELD_X;
+    this.y = FIELD_Y;
+    if (this.live === 0) {
+        this.endGame();
     }
 };
 
@@ -157,22 +163,17 @@ Player.prototype.winner = function() {
 // invoking the function start, which is identical with function init in the Engine
 Player.prototype.endGame = function() {
     if (this.score >= 10) {
-        confirm("Congrats, you win!!!");
-        start();
+        setTimeout(function() {
+            confirm("Congrats, you win!!!");
+            start();
+        }, 100);
     } else if (this.live === 0) {
         document.getElementById("life").innerHTML = this.live;
-        document.querySelector(".gameInfo").style.display = "none";
-        confirm("Sorry, you loose. Try it again!");
-        start();
+        setTimeout(function(){
+            confirm("Sorry, you loose. Try it again!");
+            start();
+        }, 100);
     }
-
-    // when game ends, these object values are reseted an printed to the score-board
-    player.live = 3;
-    player.gems = 0;
-    player.score = 0;
-    document.getElementById("life").innerHTML = player.live;
-    document.getElementById("gems").innerHTML = player.gems;
-    document.getElementById("score").innerHTML = player.score;
 };
 
 // Creating the object for the green gems
@@ -210,35 +211,6 @@ GreenGems.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y, this.width, this.height);
 };
 
-// function (invoked in Engine, function update) checking if player is hitting a
-// gem by iterating over the allItems-array and comparing the x- and y-values of
-// the elements with the x- and y-values of the player. If hitting green, one point
-// is added to player.score, if hitting blue, 3 Points are added.
-// when score === 10, the method player.endGame() is ending the game
-
-GreenGems.prototype.checkCollisionsItems = function() {
-    for (var i = 0; i < allItems.length; i++) {
-        if (allItems[i].y === player.y + 48 && allItems[i].x === player.x + 20) {
-            var item = allItems[i].id;
-            switch (item) {
-                case "green":
-                    player.gems += 1;
-                    break;
-                case "blue":
-                    player.gems += 3;
-                    break;
-                case "heart":
-                    player.live += 1;
-                    break;
-            }
-            document.getElementById("gems").innerHTML = player.gems;
-            document.getElementById("life").innerHTML = player.live;
-            allItems[i].time_now = 0;
-            allItems[i].time_target = 0;
-            allItems[i].update();
-        }
-    }
-};
 
 // creating a BlueGems-object, include the key .display. If the value is false,
 // the method update can create an new blue gem after a random time. If it´s true,
@@ -318,6 +290,7 @@ var Heart = function() {
     this.id = "heart";
 };
 
+
 //drawing the heart on the canvas
 Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y, this.width, this.height);
@@ -343,10 +316,14 @@ Heart.prototype.update = function() {
     this.time_now = Date.now();
 };
 
+// function (invoked in Engine, function update) checking if player is hitting a
+// gem by iterating over the allItems-array and comparing the x- and y-values of
+// the elements with the x- and y-values of the player. If hitting green, one point
+// is added to player.score, if hitting blue, 3 Points are added.
+// when score === 10, the method player.endGame() is ending the game
 
-//method for checking, if player hits a Heart or another treasure
-Heart.prototype.checkCollisionTreasure = function() {
-    for (var i = 0; i < allTreasures.length; i++) {
+var checkCollisionsItems = function() {
+    for (var i = 0; i < allItems.length; i++) {
         if (allItems[i].y === player.y + 48 && allItems[i].x === player.x + 20) {
             var item = allItems[i].id;
             switch (item) {
@@ -356,8 +333,12 @@ Heart.prototype.checkCollisionTreasure = function() {
                 case "blue":
                     player.gems += 3;
                     break;
+                case "heart":
+                    player.live += 1;
+                    break;
             }
             document.getElementById("gems").innerHTML = player.gems;
+            document.getElementById("life").innerHTML = player.live;
             allItems[i].time_now = 0;
             allItems[i].time_target = 0;
             allItems[i].update();
@@ -366,14 +347,13 @@ Heart.prototype.checkCollisionTreasure = function() {
 };
 
 
-
 // Creating new enemy-objects with the object-creator-functions
 var enemy1 = new Enemy(60);
 var enemy2 = new Enemy(143);
 var enemy3 = new Enemy(226);
 
 // Creating all the other objects with object-creator
-var player = new Player(fieldX, fieldY);
+var player = new Player(FIELD_X, FIELD_Y);
 var gem_green = new GreenGems();
 allGreenGems.push(gem_green);
 var gem_blue = new BlueGems();

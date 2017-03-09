@@ -86,9 +86,8 @@ var Engine = (function(global) {
 
         updateEntities(dt);
 
-        enemy1.checkCollisions();
+        updateCharacters(dt);
 
-        gem_green.checkCollisionsItems();
     }
 
     /* This is called by the update function and loops through all of the
@@ -101,16 +100,21 @@ var Engine = (function(global) {
 
     function updateEntities(dt) {
         allGreenGems.forEach(function(gems) {
+
             gems.update();
         });
         gem_blue.update();
         heart.update();
         rock.update();
+        checkCollisionsItems();
+    }
 
+    function updateCharacters(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
-        });
-        player.update();
+            player.update();
+            enemy.checkCollisions();
+        })
     }
 
     /* This function initially draws the "game level", it will then call
@@ -195,10 +199,15 @@ var Engine = (function(global) {
     // to deliver the right player-image into the Player-object
     // and to hide the Choose-your-Player-window after choosing a player
     function reset() {
+        player.live = 3;
+        player.gems = 0;
+        player.score = 0;
+        document.getElementById("life").innerHTML = player.live;
+        document.getElementById("gems").innerHTML = player.gems;
+        document.getElementById("score").innerHTML = player.score;
         document.querySelector(".gameInfo").style.display = "none";
         //making the request-panel visible
         document.getElementById("request").style.display = "inline-block";
-        document.getElementById("life").innerHTML = player.live;
         var button = document.getElementById("init");
 
         function hideWindow() {
